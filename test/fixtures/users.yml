@@ -2,10 +2,12 @@
 
 one:
   username: MyString
-  password: MyString
-  last_signin_at: 2024-05-24 17:30:57
+  password_digest: MyString
+  password_confirmation: MyString
+  last_signin_at: 2024-05-24 21:36:24
 
 two:
   username: MyString
-  password: MyString
-  last_signin_at: 2024-05-24 17:30:57
+  password_digest: MyString
+  password_confirmation: MyString
+  last_signin_at: 2024-05-24 21:36:24
