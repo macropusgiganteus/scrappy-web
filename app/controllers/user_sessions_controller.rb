@@ -7,6 +7,8 @@ class UserSessionsController < ApplicationController
     @user = User.find_by(username: params[:user][:username])
 
     if @user && @user.authenticate(params[:user][:password])
+      @user.last_signin_at = DateTime.current
+      @user.save
       session[:user_id] = @user.id
       redirect_to root_path
     else
