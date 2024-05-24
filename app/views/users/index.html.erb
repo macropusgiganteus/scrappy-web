@@ -1,0 +1,21 @@
+<h1>Users#index</h1>
+
+<%= link_to 'New User', new_user_path %>
+<%= link_to 'SignIn', authenticate_user_path %>
+
+<table>
+  <thead>
+    <tr>
+      <th>id</th>
+      <th>username</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.username %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
