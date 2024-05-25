@@ -1,33 +1,27 @@
-<div class="grid grid-cols-4 gap-4">
+<div class="grid grid-cols-1 w-full p-6">
     <% if current_user %>
-        <div class="col-start-2 col-span-2">
-            <h1>Welcome, <%= current_user.username %></h1>
-            <%= link_to 'Logout', user_session_path(current_user), data: { turbo_method: :delete }, class: "btn-primary" %><br><br>
-        </div>
-        <%= form_with(url: keywords_path, method: :get, data: {turbo_frame: "keywords"}, class: "col-start-2 col-span-2") do |form| %>
-            <%= form.label :query, "Search by keyword:", class: "block mb-2" %>
+        <%= form_with(url: keywords_path, method: :get, data: {turbo_frame: "keywords"}) do |form| %>
             <div class="flex space-x-3">
-                <%= form.text_field :query, class: "py-2 px-2 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none" %>
+                <%= form.text_field :query, placeholder: "Keyword...", class: "py-2 px-2 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none" %>
 
                 <%= form.submit 'Search', class: "px-2 py-2 font-medium
             bg-orange-300 text-neutal-900 rounded flex items-center cursor-pointer hover:bg-orange-400 focus:ring-4 ring-0 focus:ring-orange-100" %>
             </div>
         <% end %>
-        <div class="col-start-2 col-span-2 overflow-y-auto max-h-40">
-            <table class="text-left w-full min-w-full">
-                <thead class="bg-gray-400 text-white sticky top-0">
+        <div>
+            <table class="text-left w-full min-w-full overflow-y-auto">
+                <thead class="bg-gray-400 sticky">
                     <tr>
                         <th>Keyword</th>
-                        <%# <th>Artist</th>
-                        <th>Year</th> %>
+                        <th>Action</th>
+                        <%# <th>Year</th> %>
                     </tr>
                 </thead>
                 <tbody class="overflow-y-scroll">
                     <% @keywords.each do |keyword| %>
                          <tr>
                             <td><%= keyword.keyword %></td>
-                            <%# <td>-</td>
-                            <td>-</td> %>
+                            <td>-</td>
                         </tr>
                     <% end %>
                 </tbody>
@@ -39,6 +33,4 @@
         </div>
         <%= link_to 'Login', login_path , class: "btn-primary col-span-2 col-start-2" %>
     <% end %>
-
-    <%= link_to 'Secret page', '/keywords/secret', class: "btn-primary bg-black hover:bg-gray-500 col-span-2 col-start-2" %>
 </div>
