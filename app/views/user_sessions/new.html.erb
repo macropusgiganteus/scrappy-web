@@ -1,0 +1,17 @@
+<h1>Scrappy</h1>
+<%= image_tag("scrappy-doo-cropped.png", :alt => "scrappy logo", class: "rounded-full w-36 h-36 bg-amber-400") %>
+<%= form_with model: @user, url: user_sessions_path do |f| %>
+  <div>
+    <%= f.label :username %><br>
+    <%= f.text_field :username, class: "form-field" %>
+  </div>
+  <div>
+    <%= f.label :password %><br>
+    <%= f.password_field :password, class: "form-field" %>
+  </div>
+  <p>
+    <%= f.submit 'Login', class: "btn-primary" %>
+    <%= link_to 'Register', register_path, class: "btn-primary py-3" %>
+  </p>
+   
+<% end %>
