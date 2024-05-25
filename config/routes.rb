@@ -7,4 +7,5 @@ Rails.application.routes.draw do
 
   resources :user_sessions, only: [:create, :destroy]
   resources :users, only: [:index, :create, :authenticate]
+  resources :keywords, only: [:index]
 end
