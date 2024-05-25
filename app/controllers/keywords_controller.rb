@@ -1,6 +1,9 @@
 class KeywordsController < ApplicationController
+    before_action :require_login, only: [:index, :secret]
+
     # index is a public page
     def index
+ 
     end
   
     # secret is a private page, only logged-in user can enter
