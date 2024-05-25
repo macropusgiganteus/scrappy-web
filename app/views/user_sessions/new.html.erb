@@ -2,13 +2,13 @@
 <%= form_with model: @user, url: user_sessions_path do |f| %>
   <div>
     <%= f.label :username %><br>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, class: "form-field" %>
   </div>
   <div>
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "form-field" %>
   </div>
   <p>
-    <%= f.submit 'Login' %>
+    <%= f.submit 'Login', class: "btn-primary" %>
   </p>
 <% end %>

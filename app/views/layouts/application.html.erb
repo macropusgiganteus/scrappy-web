@@ -11,14 +11,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="prose mx-auto">
     <% flash.each do |type, msg| %>
       <div>
         <%= msg %>
       </div>
     <% end %>
-    <div class="md:flex md:justify-center mb-6">
-      <%= yield %>
-    </div>
+    <%= yield %>
   </body>
 </html>

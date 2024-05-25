@@ -11,17 +11,17 @@
   <% end %>
   <div>
     <%= f.label :username %><br>
-    <%= f.text_field :username %>
+    <%= f.text_field :username, class: "form-field" %>
   </div>
   <div>
     <%= f.label :password %><br>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, class: "form-field" %>
   </div>
   <div>
     <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-field" %>
   </div>
   <p>
-    <%= f.submit %>
+    <%= f.submit 'Create' , class: "btn-primary" %>
   </p>
 <% end %>
