@@ -1,5 +1,6 @@
 class KeywordsController < ApplicationController
-    before_action :require_login, only: [:index, :secret]
+    # Before the action, check if user is logged in.
+    before_action :require_login, only: [:index]
 
     # index is a public page
     def index
@@ -8,12 +9,5 @@ class KeywordsController < ApplicationController
         else
             @keywords = Keyword.where(user_id: session[:user_id])
         end   
-    end
-  
-    # secret is a private page, only logged-in user can enter
-    def secret
-      if current_user.blank?
-        render plain: '401 Unauthorized', status: :unauthorized
-      end
     end
   end
