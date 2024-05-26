@@ -37,7 +37,7 @@
                             <td><%= keyword.keyword_result ? keyword.keyword_result.total_ads : 0%></td>
                             <td><%= keyword.keyword_result ? keyword.keyword_result.total_links : 0%></td>
                             <td><%= keyword.keyword_result ? keyword.keyword_result.total_search_results : ""%></td>
-                            <td><div class="btn-primary">HTML</div></td>
+                            <td><%= link_to "HTML", keyword_path(keyword) %></td>
                         </tr>
                     <% end %>
                 </tbody>
