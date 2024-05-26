@@ -10,9 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_25_063544) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_26_125541) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "keyword_results", force: :cascade do |t|
+    t.bigint "keyword_id", null: false
+    t.bigint "total_ads"
+    t.bigint "total_links"
+    t.string "total_search_results"
+    t.string "html"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["keyword_id"], name: "index_keyword_results_on_keyword_id"
+  end
 
   create_table "keywords", force: :cascade do |t|
     t.string "keyword"
@@ -31,5 +42,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_25_063544) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "keyword_results", "keywords"
   add_foreign_key "keywords", "users"
 end
