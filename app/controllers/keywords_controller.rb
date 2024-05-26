@@ -35,20 +35,24 @@ class KeywordsController < ApplicationController
         end
 
         # Process the file
+        total_created = 0
         begin
             CSV.foreach(file.path) do |row|
-            keyword = Keyword.new
-            keyword.keyword = row[0]
-            keyword.user = current_user
-            
-            if keyword.valid?
-                keyword.save!
-            else
-                # Handle invalid rows here, e.g., log errors
-                Rails.logger.error "Invalid row: #{keyword.errors.full_messages}"
+                next if Keyword.find_by(user: current_user, keyword: row[0]).present?
+                
+                keyword = Keyword.new
+                keyword.keyword = row[0]
+                keyword.user = current_user
+                
+                if keyword.valid?
+                    keyword.save!
+                    total_created += 1
+                else
+                    # Handle invalid rows here, e.g., log errors
+                    Rails.logger.error "Invalid row: #{keyword.errors.full_messages}"
+                end
             end
-        end
-            redirect_to keywords_path, notice: "CSV imported successfully"
+            redirect_to keywords_path, notice: "CSV imported successfully. #{total_created} new keywords were imported"
         rescue CSV::MalformedCSVError => e
             redirect_to keywords_path, alert: "There was an error processing the file: #{e.message}"
         end
