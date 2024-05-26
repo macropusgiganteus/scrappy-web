@@ -1,0 +1,13 @@
+
+<div class="">
+    <h2 class="text-xl font-semibold mb-4">HTML Preview</h2>
+    <% if @html_view == "code" %>
+        <div id="code-preview-container" class="code-preview bg-gray-100 p-4 rounded-lg h-screen overflow-auto">
+            <%= @keyword.keyword_result.html %> <!-- Initial HTML content -->
+        </div>
+    <% elsif @html_view == "render" %>
+        <div id="code-preview-container" class="code-preview bg-gray-100 p-4 rounded-lg h-screen overflow-auto">
+            <%= raw @keyword.keyword_result.html %> <!-- Initial HTML content -->
+        </div>
+    <% end %>
+</div>

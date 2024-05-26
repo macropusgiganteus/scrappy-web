@@ -16,6 +16,19 @@ class KeywordsController < ApplicationController
         end   
     end
 
+    def show
+        @html_view = "code"
+        if params[:id].present? && Keyword.includes(:keyword_result).find_by(user: current_user, id: params[:id]).present?
+            if params[:view].present?
+                @html_view = params[:view]
+            end
+
+            @keyword = Keyword.includes(:keyword_result).find_by(user: current_user, id: params[:id])
+        else 
+            redirect_to keywords_path
+        end
+    end
+
     def import_csv    
         if !params[:file].present?
             redirect_to keywords_path, alert: "Please upload a file"
