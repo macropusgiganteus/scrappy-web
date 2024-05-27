@@ -103,15 +103,17 @@ class KeywordsController < ApplicationController
         # defining a data structure to store the scraped data 
         # Result = Struct.new(:url, :image, :name, :price)
 
-        html_ads_section = document.at_css('div#tads[aria-label=Ads]') || document.at_css('div#tads')
-        total_ads = html_ads_section ? html_ads_section.count : 0
-
+        html_ads_parent = document.at_css('div#tads[aria-label=Ads]') || document.at_css('div#tads')
+        total_ads = html_ads_parent ? html_ads_parent.css('div').count : 0
+ 
         # selecting all HTML link elements 
         html_links = document.css("a")
-        total_links = html_links.count
+        total_links = html_links ? html_links.count : 0
 
         html_stats = document.at_css("div#result-stats")
+        total_search_results = html_stats ? html_stats.content : ""
+        
 
-        return total_ads, total_links, html_stats.content, document
+        return total_ads, total_links, total_search_results, document
     end
 end
