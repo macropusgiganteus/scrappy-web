@@ -1,7 +1,7 @@
-<div class="grid grid-cols-1 w-full p-6">
+<div class="grid grid-cols-6 w-full py-6">
     <% if current_user %>
         
-        <%= form_with url: import_keywords_path, html: {class: "grid grid-cols-4 gap-2 w-full my-2"}, local: true, multipart: true do |form| %>
+        <%= form_with url: import_keywords_path, html: {class: "sm:col-span-4 sm:col-start-2 lg:col-span-2 lg:col-start-3 grid grid-cols-4 gap-2 w-full my-2"}, local: true, multipart: true do |form| %>
                 <div class="row-span-1 col-span-4" ><%= form.label :file, "Import keywords", class: "text-base text-gray-500 font-semibold block" %></div>
                 <div class="row-span-2 col-span-3"><%= form.file_field :file, class: "w-full text-gray-400 font-semibold text-sm bg-white border file:cursor-pointer cursor-pointer file:border-0 file:py-3 file:px-4 file:mr-4 file:bg-gray-100 file:hover:bg-gray-200 file:text-gray-500 rounded", aria: { describedby: 'file_input_help' }, id: 'file_input' %></div>
                 <div class="row-span-2">
@@ -10,7 +10,7 @@
                 <div class="row-span-1 col-span-4"><p class="text-xs text-gray-400 mt-2" id="file_input_help">Only CSV file is allowed</p></div>
         <% end %>
 
-        <%= form_with(url: keywords_path, html: {class: "grid grid-cols-4 gap-2 w-full my-2"}, method: :get, data: {turbo_frame: "keywords"}) do |form| %>
+        <%= form_with(url: keywords_path, html: {class: "sm:col-span-4 sm:col-start-2 lg:col-span-2 lg:col-start-3 grid grid-cols-4 gap-2 w-full my-2"}, method: :get, data: {turbo_frame: "keywords"}) do |form| %>
             <div class="col-span-3">
                 <%= form.text_field :query, placeholder: "Keyword...", class: "w-full py-2 px-2 rounded border ring-0 focus:ring-4 focus:ring-orange-100 focus:shadow-none focus:border-orange-500 focus:outline-none" %>
             </div>
@@ -19,20 +19,25 @@
             </div>
         <% end %>
 
-        <div>
-            <table class="text-left w-full min-w-full overflow-y-auto">
+        <div class="col-span-4 col-start-2">
+            <table class="text-left w-full min-w-full overflow-y-auto rounded">
                 <thead class="bg-gray-400 sticky">
                     <tr>
                         <th>Keyword</th>
+                        <th>Total Ads</th>
+                        <th>Total Links</th>
+                        <th>Total Results</th>
                         <th>Action</th>
-                        <%# <th>Year</th> %>
                     </tr>
                 </thead>
                 <tbody class="overflow-y-scroll">
                     <% @keywords.each do |keyword| %>
                          <tr>
                             <td><%= keyword.keyword %></td>
-                            <td>-</td>
+                            <td><%= keyword.keyword_result ? keyword.keyword_result.total_ads : 0%></td>
+                            <td><%= keyword.keyword_result ? keyword.keyword_result.total_links : 0%></td>
+                            <td><%= keyword.keyword_result ? keyword.keyword_result.total_search_results : ""%></td>
+                            <td><%= link_to "HTML", keyword_path(keyword) %></td>
                         </tr>
                     <% end %>
                 </tbody>
