@@ -5,8 +5,12 @@
 
 @layer components {
   .btn-primary {
-    @apply text-white no-underline bg-blue-500 px-4 py-2 rounded hover:bg-blue-400;
-  }  
+    @apply text-white no-underline bg-black px-4 py-2 rounded hover:bg-gray-600;
+  }
+
+  .btn-secondary {
+    @apply text-black no-underline bg-white px-4 py-2 rounded border-2 border-black hover:bg-gray-100;
+  }
 }
 
 .form-field {
