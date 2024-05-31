@@ -6,3 +6,9 @@ david:
   password_confirmation: ""
   last_signin_at: 2024-05-24 21:36:24
 
+two:
+  username: two
+  password_digest: <%= BCrypt::Password.create('pwd') %>
+  password_confirmation: ""
+  last_signin_at: 2024-05-24 21:36:24
+
