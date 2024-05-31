@@ -9,11 +9,11 @@
     <%= form_with model: @user, url: user_sessions_path do |f| %>
     <div class="grid grid-cols-2 gap-3">
       <div class="col-span-2">
-        <%= f.label :username %><br>
+        <%= f.label :username %>
         <%= f.text_field :username, class: "form-field" %>
       </div>
-      <div class="col-span-2">
-        <%= f.label :password %><br>
+      <div class="col-span-2 mb-4">
+        <%= f.label :password %>
         <%= f.password_field :password, class: "form-field" %>
       </div>
       <%= f.submit 'Login', class: "btn-primary col-span-2" %>
