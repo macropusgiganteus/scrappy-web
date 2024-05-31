@@ -1,7 +1,9 @@
-<h1>Register</h1>
-<%= form_with model: @user do |f| %>
+<div class="grid grid-cols-5 w-full py-6">
+  <div class="col-start-3 m-auto">
+    <h1>Register</h1>
+  </div>
   <% if @user.errors.any? %>
-    <div>
+    <div class="col-span-3 col-start-3">
       <ul>
         <% @user.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -9,19 +11,30 @@
       </ul>
     </div>
   <% end %>
-  <div>
-    <%= f.label :username %><br>
-    <%= f.text_field :username, class: "form-field" %>
+  <div class="col-start-3 m-auto">
+    <%= form_with model: @user do |f| %>
+      <div class="grid grid-cols-2 gap-2">
+        <div class="col-span-2">
+          <%= f.label :username %>
+        </div>
+        <div class="col-span-2">
+          <%= f.text_field :username, class: "form-field" %>
+        </div>
+        <div class="col-span-2">
+          <%= f.label :password %>
+        </div>
+        <div class="col-span-2">
+          <%= f.password_field :password, class: "form-field" %>
+        </div>
+        <div class="col-span-2">
+          <%= f.label :password_confirmation %>
+        </div>
+        <div class="col-span-2 mb-4">
+          <%= f.password_field :password_confirmation, class: "form-field" %>
+        </div>
+        <%= f.submit 'Register' , class: "btn-primary col-span-2" %>
+        <%= link_to 'Back', login_path , class: "btn-secondary col-span-2 text-center" %>
+      </div>
+    <% end %>
   </div>
-  <div>
-    <%= f.label :password %><br>
-    <%= f.password_field :password, class: "form-field" %>
-  </div>
-  <div>
-    <%= f.label :password_confirmation %><br>
-    <%= f.password_field :password_confirmation, class: "form-field" %>
-  </div>
-  <p>
-    <%= f.submit 'Register' , class: "btn-primary" %>
-  </p>
-<% end %>
+</div>
