@@ -2,14 +2,14 @@
 
 one:
   keyword: one
-  total_ads: 
-  total_links: 
-  total_search_results: MyString
-  html: MyString
+  total_ads: 5
+  total_links: 10
+  total_search_results: "total search result 1"
+  html: HTML1
 
 two:
   keyword: two
-  total_ads: 
-  total_links: 
-  total_search_results: MyString
-  html: MyString
+  total_ads: 2
+  total_links: 20
+  total_search_results: "total search result 2"
+  html: HTML2
