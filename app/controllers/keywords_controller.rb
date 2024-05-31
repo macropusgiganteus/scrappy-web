@@ -195,7 +195,7 @@ class KeywordsController < ApplicationController
     ]
 
     def google_search(keyword)
-        sleep(1)
+        sleep(rand(1..3))
         response = HTTParty.get("http://www.google.com/search?q=#{keyword}&hl=en", { 
             headers: { 
                 "User-Agent" =>  USER_AGENTS.sample
