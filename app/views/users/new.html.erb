@@ -13,17 +13,23 @@
   <% end %>
   <div class="col-start-3 m-auto">
     <%= form_with model: @user do |f| %>
-      <div class="grid grid-cols-2 gap-3">
+      <div class="grid grid-cols-2 gap-2">
         <div class="col-span-2">
-          <%= f.label :username %><br>
+          <%= f.label :username %>
+        </div>
+        <div class="col-span-2">
           <%= f.text_field :username, class: "form-field" %>
         </div>
         <div class="col-span-2">
-          <%= f.label :password %><br>
+          <%= f.label :password %>
+        </div>
+        <div class="col-span-2">
           <%= f.password_field :password, class: "form-field" %>
         </div>
         <div class="col-span-2">
-          <%= f.label :password_confirmation %><br>
+          <%= f.label :password_confirmation %>
+        </div>
+        <div class="col-span-2 mb-4">
           <%= f.password_field :password_confirmation, class: "form-field" %>
         </div>
         <%= f.submit 'Register' , class: "btn-primary col-span-2" %>
