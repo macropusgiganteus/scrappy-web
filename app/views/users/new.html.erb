@@ -2,18 +2,18 @@
   <div class="col-start-3 m-auto">
     <h1>Register</h1>
   </div>
+  <% if @user.errors.any? %>
+    <div class="col-span-3 col-start-3">
+      <ul>
+        <% @user.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
   <div class="col-start-3 m-auto">
     <%= form_with model: @user do |f| %>
       <div class="grid grid-cols-2 gap-3">
-        <% if @user.errors.any? %>
-          <div class="col-span-2">
-            <ul>
-              <% @user.errors.full_messages.each do |message| %>
-                <li><%= message %></li>
-              <% end %>
-            </ul>
-          </div>
-        <% end %>
         <div class="col-span-2">
           <%= f.label :username %><br>
           <%= f.text_field :username, class: "form-field" %>
