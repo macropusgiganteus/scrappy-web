@@ -1,24 +1,7 @@
-# README
+# Scrappy Web
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+To get the application up and running:
+1. Install gems `bundle install` 
+2. Run `docker-compose -f docker-compose.dev.yml up -d` to start the database
+3. Run `rails db:migrate` to setup the database
+4. Run `bin/dev` to start a server
