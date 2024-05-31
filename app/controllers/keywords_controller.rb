@@ -5,7 +5,7 @@ class KeywordsController < ApplicationController
     require "nokogiri"
 
     # Before the action, check if user is logged in.
-    before_action :require_login, only: [:index]
+    before_action :require_login, only: [:index, :show]
 
     # index is a public page
     def index
